@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/corner_less"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="@color/primaryDarkColor"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/row_music_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/row_imageView_music_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Sad Sea" />
+
+    <TextView
+        android:id="@+id/row_music_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/row_imageView_music_image"
+        app:layout_constraintTop_toBottomOf="@+id/row_imageView_music_image"
+        tools:text="majid" />
+
+    <TextView
+        android:id="@+id/row_music_albume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/row_music_artist"
+        app:layout_constraintStart_toEndOf="@+id/row_music_artist"
+        app:layout_constraintTop_toTopOf="@+id/row_music_artist"
+        tools:text="broken" />
+
+    <TextView
+        android:id="@+id/row_music_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/row_music_artist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/row_music_name"
+        tools:text="3:55" />
+
+    <ImageView
+        android:id="@+id/row_imageView_music_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_music" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
