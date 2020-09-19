@@ -22,17 +22,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.maktab.hw17.R;
 import org.maktab.hw17.model.Music;
+import org.maktab.hw17.repository.MusicRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class TrackListFragment extends Fragment {
 
     private ListCallBacks mCallBacks;
     private RecyclerView mRecyclerView;
-
-
+    private MusicRepository mRepository;
     public static TrackListFragment newInstance() {
         return new TrackListFragment();
     }
@@ -47,7 +48,7 @@ public class TrackListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mRepository = MusicRepository.getInstance();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -56,9 +57,9 @@ public class TrackListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_music_list, container, false);
         findViews(view);
-        List<Music> songs = gettingMusicList();
+        mRepository.setMusics( gettingMusicList());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(new TrackAdapter(songs));
+        mRecyclerView.setAdapter(new TrackAdapter(mRepository.getMusics()));
 
         return view;
     }
@@ -66,6 +67,8 @@ public class TrackListFragment extends Fragment {
     private void findViews(View view) {
         mRecyclerView = view.findViewById(R.id.trackList_recycler_view);
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     private List<Music> gettingMusicList() {
@@ -100,6 +103,8 @@ public class TrackListFragment extends Fragment {
         }
         return songs;
     }
+
+
 
     private class TrackAdapter extends RecyclerView.Adapter<TrackAdapter.TrackViewHolder> {
         private List<Music> mMusicList;

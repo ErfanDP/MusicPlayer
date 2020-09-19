@@ -27,7 +27,6 @@
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/bar_music_artist"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:text="Test" />
 
     <TextView
@@ -36,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/bar_music_name"
-        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="272dp"
         tools:text="Test" />
 
     <ImageView

@@ -4,24 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:visibility="visible">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tablayout_lists"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager_music_lists"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tablayout_lists" />
-    </RelativeLayout>
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/music_bar_container"

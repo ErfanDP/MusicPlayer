@@ -1,6 +1,7 @@
 package org.maktab.hw17.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Music implements Serializable {
 
@@ -56,6 +57,19 @@ public class Music implements Serializable {
 
     public void setFilePath(String filePath) {
         mFilePath = filePath;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Music music = (Music) o;
+        return Objects.equals(mFilePath, music.mFilePath);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mFilePath);
     }
 }
 
