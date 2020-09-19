@@ -17,6 +17,8 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.maktab.hw17.R;
 
+import java.util.Objects;
+
 public class MusicPagerFragment extends Fragment {
     private ViewPager2 mViewPager;
     private TabLayout mTabLayout;
@@ -37,7 +39,7 @@ public class MusicPagerFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_music_pager, container, false);
         findViews(view);
-        mViewPager.setAdapter(new ViewPagerAdapter(getActivity()));
+        mViewPager.setAdapter(new ViewPagerAdapter(Objects.requireNonNull(getActivity())));
         tabLayoutAndViewPagerBinder();
         return view;
     }
@@ -76,13 +78,7 @@ public class MusicPagerFragment extends Fragment {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            switch (position) {
-                case 0:
                     return TrackListFragment.newInstance();
-                //todo
-                default:
-                    return null;
-            }
         }
 
         @Override

@@ -62,18 +62,22 @@ public class MusicInformationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_music_information, container, false);
         findViews(view);
-        updateViews();
+        updateViews(mMusic);
         listeners();
         return view;
     }
 
-    private void updateViews() {
+    public void updateViews(Music music) {
+        mMusic = music;
         MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
         metaRetriver.setDataSource(mMusic.getFilePath());
         byte[] art = metaRetriver.getEmbeddedPicture();
         if (art != null) {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.outHeight = mMusicPicture.getMaxHeight();
+            options.outWidth = mMusicPicture.getMaxWidth();
             Bitmap songImage = BitmapFactory
-                    .decodeByteArray(art, 0, art.length);
+                    .decodeByteArray(art, 0, art.length,options);
             mMusicPicture.setImageBitmap(songImage);
         }else {
             mMusicPicture.setImageDrawable(getResources().getDrawable(R.drawable.ic_music));
@@ -121,14 +125,14 @@ public class MusicInformationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mMusic = mCallBacks.onNextClick();
-                updateViews();
+                updateViews(mMusic);
             }
         });
         mPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMusic = mCallBacks.onPreviousClick();
-                updateViews();
+                updateViews(mMusic);
             }
         });
         mBack.setOnClickListener(new View.OnClickListener() {

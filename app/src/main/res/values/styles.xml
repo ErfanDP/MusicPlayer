@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/primaryTextColor</item>
+        <item name="background">@color/primaryBackGround</item>
     </style>
 
     <style name="corner_less" >

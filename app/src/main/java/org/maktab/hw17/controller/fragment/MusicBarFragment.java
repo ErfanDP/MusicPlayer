@@ -136,6 +136,7 @@ public class MusicBarFragment extends Fragment {
             updateSeekBar();
             mMusicArtist.setText(music.getArtist());
             mMusicTitle.setText(music.getName());
+            mCallBacks.onMusicChanged(mMusic);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -176,7 +177,7 @@ public class MusicBarFragment extends Fragment {
 
 
     public Music  nextMusic(){
-        mMusic = mRepository.nextMusic(mRepository.getMusics().indexOf(mMusic));
+        mMusic = mRepository.nextMusic(mRepository.getMusics().indexOf(mMusic)+1);
         startMusic(mMusic);
         return mMusic;
     }
@@ -209,5 +210,6 @@ public class MusicBarFragment extends Fragment {
 
     public interface MusicBarCallBacks {
         void onMusicBarClicked(int musicIndex);
+        void onMusicChanged(Music music);
     }
 }

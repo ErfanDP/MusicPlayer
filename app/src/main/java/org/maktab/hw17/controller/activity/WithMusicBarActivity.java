@@ -84,7 +84,6 @@ public class WithMusicBarActivity extends AppCompatActivity
                 .findFragmentById(R.id.music_bar_container);
         Objects.requireNonNull(fragment).musicInformationClosed();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().remove(fragmentManager.findFragmentById(R.id.fragment_container));
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, TrackListFragment.newInstance())
                 .commit();
@@ -105,6 +104,14 @@ public class WithMusicBarActivity extends AppCompatActivity
                 .commit();
     }
 
+    @Override
+    public void onMusicChanged(Music music) {
+        Fragment fragment = getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_container);
+        if(fragment instanceof MusicInformationFragment){
+            ((MusicInformationFragment)fragment).updateViews(music);
+        }
+    }
 
 
 }

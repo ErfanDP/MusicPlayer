@@ -27,7 +27,6 @@ import org.maktab.hw17.repository.MusicRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 public class TrackListFragment extends Fragment {
 
@@ -113,9 +112,6 @@ public class TrackListFragment extends Fragment {
             mMusicList = musicList;
         }
 
-        public void setMusicList(List<Music> musicList) {
-            mMusicList = musicList;
-        }
 
         @NonNull
         @Override
@@ -162,15 +158,20 @@ public class TrackListFragment extends Fragment {
                 mMusic = music;
                 mTitle.setText(music.getName());
                 mAlbum.setText(music.getAlbum());
-                mDuration.setText(getTime(Long.valueOf(music.getDuration())));
+                mDuration.setText(getTime(Long.parseLong(music.getDuration())));
                 mArtist.setText(music.getArtist());
                 MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
                 metaRetriver.setDataSource(music.getFilePath());
                 byte[] art = metaRetriver.getEmbeddedPicture();
                 if(art !=null) {
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.outHeight = mImage.getMaxHeight();
+                    options.outWidth = mImage.getMaxWidth();
                     Bitmap songImage = BitmapFactory
-                            .decodeByteArray(art, 0, art.length);
+                            .decodeByteArray(art, 0, art.length,options);
                     mImage.setImageBitmap(songImage);
+                }else {
+                    mImage.setImageDrawable(getResources().getDrawable(R.drawable.ic_music));
                 }
 
             }
