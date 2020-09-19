@@ -60,7 +60,7 @@ public class MusicInformationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_music_information, container, false);
+        View view = inflater.inflate(R.layout.fragment_music_information, container, false);
         findViews(view);
         updateViews();
         listeners();
@@ -71,15 +71,18 @@ public class MusicInformationFragment extends Fragment {
         MediaMetadataRetriever metaRetriver = new MediaMetadataRetriever();
         metaRetriver.setDataSource(mMusic.getFilePath());
         byte[] art = metaRetriver.getEmbeddedPicture();
-        if(art !=null) {
+        if (art != null) {
             Bitmap songImage = BitmapFactory
                     .decodeByteArray(art, 0, art.length);
             mMusicPicture.setImageBitmap(songImage);
+        }else {
+            mMusicPicture.setImageDrawable(getResources().getDrawable(R.drawable.ic_music));
         }
         mMusicName.setText(mMusic.getName());
         mMusicArtist.setText(mMusic.getArtist());
         mMusicAlbum.setText(mMusic.getAlbum());
         playIconCheck();
+        shuffleIconChecker();
     }
 
     private void findViews(View view) {
@@ -94,25 +97,26 @@ public class MusicInformationFragment extends Fragment {
         mBack = view.findViewById(R.id.imageView_back);
     }
 
+
     private void listeners() {
         mPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playIconCheck();
                 mCallBacks.onPlayClick();
+                playIconCheck();
             }
         });
-//        mShuffle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(mCallBacks.){
-//                    mShuffle.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_pause));
-//                }else{
-//                    mShuffle.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_play));
-//                }
-//                mCallBacks.;
-//            }
-//        });
+        mShuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mRepository.isShuffle()) {
+                    mRepository.setShuffle(false);
+                } else {
+                    mRepository.setShuffle(true);
+                }
+                shuffleIconChecker();
+            }
+        });
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +127,7 @@ public class MusicInformationFragment extends Fragment {
         mPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMusic =  mCallBacks.onPreviousClick();
+                mMusic = mCallBacks.onPreviousClick();
                 updateViews();
             }
         });
@@ -136,27 +140,40 @@ public class MusicInformationFragment extends Fragment {
 
     }
 
+    private void shuffleIconChecker() {
+        if (mRepository.isShuffle()) {
+            mShuffle.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_shufle));
+        } else {
+            mShuffle.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_not_shufle));
+        }
+    }
+
 
     private void playIconCheck() {
-        if(mCallBacks.isMusicPlaying()){
+        if (mCallBacks.isMusicPlaying()) {
             mPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_pause));
-        }else{
+        } else {
             mPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_play));
         }
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof MusicInformationButtonsCallBacks){
+        if (context instanceof MusicInformationButtonsCallBacks) {
             mCallBacks = (MusicInformationButtonsCallBacks) context;
         }
     }
 
-    public interface MusicInformationButtonsCallBacks{
+    public interface MusicInformationButtonsCallBacks {
         void onPlayClick();
+
         Music onNextClick();
+
         Music onPreviousClick();
+
         void onBack();
+
         boolean isMusicPlaying();
     }
 }

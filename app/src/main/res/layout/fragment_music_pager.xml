@@ -12,5 +12,6 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_music_lists"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tablayout_lists" />
 </RelativeLayout>
