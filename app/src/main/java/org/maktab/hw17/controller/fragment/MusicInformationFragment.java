@@ -35,7 +35,6 @@ public class MusicInformationFragment extends Fragment {
     private ImageView mPrevious;
     private ImageView mShuffle;
     private ImageView mMusicPicture;
-    private ImageView mBack;
     private MusicRepository mRepository;
 
 
@@ -98,7 +97,6 @@ public class MusicInformationFragment extends Fragment {
         mNext = view.findViewById(R.id.imageView_next);
         mPrevious = view.findViewById(R.id.imageView_previous);
         mShuffle = view.findViewById(R.id.imageView_shuffle);
-        mBack = view.findViewById(R.id.imageView_back);
     }
 
 
@@ -135,12 +133,7 @@ public class MusicInformationFragment extends Fragment {
                 updateViews(mMusic);
             }
         });
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCallBacks.onBack();
-            }
-        });
+
 
     }
 
@@ -180,4 +173,6 @@ public class MusicInformationFragment extends Fragment {
 
         boolean isMusicPlaying();
     }
+
+
 }

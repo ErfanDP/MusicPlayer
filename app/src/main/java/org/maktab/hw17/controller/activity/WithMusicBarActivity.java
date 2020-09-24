@@ -82,11 +82,12 @@ public class WithMusicBarActivity extends AppCompatActivity
     public void onBack() {
         MusicBarFragment fragment = (MusicBarFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.music_bar_container);
-        Objects.requireNonNull(fragment).musicInformationClosed();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, TrackListFragment.newInstance())
-                .commit();
+            Objects.requireNonNull(fragment).musicInformationClosed();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, MusicPagerFragment.newInstance())
+                    .commit();
+
     }
 
     @Override

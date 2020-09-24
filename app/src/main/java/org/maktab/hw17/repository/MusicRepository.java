@@ -1,5 +1,6 @@
 package org.maktab.hw17.repository;
 
+import org.maktab.hw17.model.Artist;
 import org.maktab.hw17.model.Music;
 
 import java.util.ArrayList;
@@ -51,4 +52,30 @@ public class MusicRepository {
     public Music previousMusic(int musicIndex){
         return mMusics.get(musicIndex-1);
     }
+
+    public List<Artist> getArtists(){
+        List<Artist> artists = new ArrayList<>();
+        for (Music music:mMusics) {
+            Artist artist = new Artist(music.getArtist());
+            if(artists.contains(artist)){
+                artists.get(artists.indexOf(artist)).addMusics(music);
+            }else{
+                artist.addMusics(music);
+                artists.add(artist);
+            }
+        }
+        return artists;
+    }
+
+
+    public List<Music> getArtistsMusic(String name){
+        List<Music> musics = new ArrayList<>();
+        for (Music music :mMusics) {
+            if(music.getArtist().equals(name)){
+                musics.add(music);
+            }
+        }
+        return musics;
+    }
 }
+

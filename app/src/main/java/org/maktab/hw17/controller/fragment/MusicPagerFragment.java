@@ -63,9 +63,9 @@ public class MusicPagerFragment extends Fragment {
             case 0:
                 return "Tracks";
             case 1:
-                return "Albums";
-            case 2:
                 return "Artists";
+            case 2:
+                return "Albums";
         }
         return "null";
     }
@@ -78,12 +78,19 @@ public class MusicPagerFragment extends Fragment {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
+            switch (position) {
+                case 0:
                     return TrackListFragment.newInstance();
+                case 1:
+                    return ArtistsListFragment.newInstance();
+                default:
+                    return null;
+            }
         }
 
         @Override
         public int getItemCount() {
-            return 1;
+            return 2;
         }
     }
 

@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E8D2D2"
     tools:context=".controller.fragment.MusicPagerFragment">
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout_lists"
         android:layout_width="match_parent"

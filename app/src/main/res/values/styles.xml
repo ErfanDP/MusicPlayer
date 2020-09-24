@@ -4,12 +4,16 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-        <item name="colorAccent">@color/primaryTextColor</item>
-        <item name="background">@color/primaryBackGround</item>
+        <item name="colorAccent">@color/primaryLightColor</item>
+
     </style>
 
     <style name="corner_less" >
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="TextAppearance.Theme" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 </resources>
