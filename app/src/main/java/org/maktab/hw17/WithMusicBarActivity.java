@@ -1,4 +1,4 @@
-package org.maktab.hw17.controller.activity;
+package org.maktab.hw17;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import org.maktab.hw17.R;
 import org.maktab.hw17.controller.fragment.MusicBarFragment;
 import org.maktab.hw17.controller.fragment.MusicInformationFragment;
 import org.maktab.hw17.controller.fragment.MusicPagerFragment;
@@ -41,8 +40,13 @@ public class WithMusicBarActivity extends AppCompatActivity
         }
     }
 
-    private void findViews() {
 
+
+
+
+
+
+    private void findViews() {
         mLayoutMusicBar = findViewById(R.id.music_bar_container);
     }
 
@@ -78,17 +82,22 @@ public class WithMusicBarActivity extends AppCompatActivity
         return Objects.requireNonNull(fragment).previousMusic();
     }
 
-    @Override
-    public void onBack() {
-        MusicBarFragment fragment = (MusicBarFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.music_bar_container);
-            Objects.requireNonNull(fragment).musicInformationClosed();
+
+    @Override public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if ((fragment instanceof MusicInformationFragment)) {
+            MusicBarFragment musicBarFragment = (MusicBarFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.music_bar_container);
+            Objects.requireNonNull(musicBarFragment).musicInformationClosed();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, MusicPagerFragment.newInstance())
                     .commit();
-
+        }else{
+            super.onBackPressed();
+        }
     }
+
 
     @Override
     public boolean isMusicPlaying() {
@@ -113,6 +122,7 @@ public class WithMusicBarActivity extends AppCompatActivity
             ((MusicInformationFragment)fragment).updateViews(music);
         }
     }
+
 
 
 }

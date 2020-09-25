@@ -137,6 +137,8 @@ public class MusicInformationFragment extends Fragment {
 
     }
 
+
+
     private void shuffleIconChecker() {
         if (mRepository.isShuffle()) {
             mShuffle.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_shufle));
@@ -169,9 +171,8 @@ public class MusicInformationFragment extends Fragment {
 
         Music onPreviousClick();
 
-        void onBack();
-
         boolean isMusicPlaying();
+
     }
 
 
