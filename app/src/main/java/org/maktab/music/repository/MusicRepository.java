@@ -1,7 +1,7 @@
-package org.maktab.hw17.repository;
+package org.maktab.music.repository;
 
-import org.maktab.hw17.model.Artist;
-import org.maktab.hw17.model.Music;
+import org.maktab.music.model.Artist;
+import org.maktab.music.model.Music;
 
 import java.util.ArrayList;
 import java.util.List;

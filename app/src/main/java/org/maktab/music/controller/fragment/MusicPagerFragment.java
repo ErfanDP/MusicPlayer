@@ -1,4 +1,4 @@
-package org.maktab.hw17.controller.fragment;
+package org.maktab.music.controller.fragment;
 
 import android.os.Bundle;
 
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import org.maktab.hw17.R;
+import org.maktab.music.R;
 
 import java.util.Objects;
 

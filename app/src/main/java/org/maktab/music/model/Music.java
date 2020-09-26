@@ -1,4 +1,4 @@
-package org.maktab.hw17.model;
+package org.maktab.music.model;
 
 import java.io.Serializable;
 import java.util.Objects;

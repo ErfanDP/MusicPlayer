@@ -1,4 +1,4 @@
-package org.maktab.hw17.controller.fragment;
+package org.maktab.music.controller.fragment;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -20,9 +20,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.maktab.hw17.R;
-import org.maktab.hw17.model.Music;
-import org.maktab.hw17.repository.MusicRepository;
+import org.maktab.music.R;
+import org.maktab.music.model.Music;
+import org.maktab.music.repository.MusicRepository;
 
 import java.util.ArrayList;
 import java.util.List;

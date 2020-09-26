@@ -1,4 +1,4 @@
-package org.maktab.hw17.controller.fragment;
+package org.maktab.music.controller.fragment;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.maktab.hw17.R;
-import org.maktab.hw17.model.Music;
-import org.maktab.hw17.repository.MusicRepository;
+import org.maktab.music.R;
+import org.maktab.music.model.Music;
+import org.maktab.music.repository.MusicRepository;
 
 
 public class MusicInformationFragment extends Fragment {

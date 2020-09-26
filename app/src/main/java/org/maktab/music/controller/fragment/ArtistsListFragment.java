@@ -1,4 +1,4 @@
-package org.maktab.hw17.controller.fragment;
+package org.maktab.music.controller.fragment;
 
 import android.os.Bundle;
 
@@ -12,10 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.maktab.hw17.R;
-import org.maktab.hw17.model.Artist;
-import org.maktab.hw17.model.Music;
-import org.maktab.hw17.repository.MusicRepository;
+import org.maktab.music.R;
+import org.maktab.music.model.Artist;
+import org.maktab.music.repository.MusicRepository;
 
 import java.util.List;
 
